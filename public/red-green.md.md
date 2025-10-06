@@ -1,8 +1,8 @@
 ---
-title: cv2を使った赤、緑検知
+title: cv2を使った赤・緑検知
 tags:
   - Python
-  - cv2
+  - OpenCV
 private: false
 updated_at: ''
 id: null
@@ -12,24 +12,27 @@ ignorePublish: false
 ---
 
 ライントレースをカメラで行うにあたり、赤色と緑色のマークを検知する必要がありました。  
-今回は`cv2`を用いて色検知を行う方法をまとめます。  
+今回は `cv2` を用いて色検知を行う方法をまとめます。  
+
+---
 
 # 色検知の基本
 
-OpenCVでは色検知に**HSV色空間**を使うのが一般的です。  
-HSVでは値の範囲が次のようになっています。
+OpenCVでは色検知に **HSV色空間** を使うのが一般的です。  
+OpenCVでのHSVでは値の範囲が次のようになっています。
 
-- **H (色相)**: `0 ~ 179`
-- **S (彩度)**: `0 ~ 255`
-- **V (明度)**: `0 ~ 255`
+- **H (色相)**: `0 ~ 179`  
+- **S (彩度)**: `0 ~ 255`  
+- **V (明度)**: `0 ~ 255`  
 
-RGBと違い、色相を独立して扱えるので、明るさや照明条件の影響を受けにくくなります。  
+RGBと異なり、色相（Hue）を独立して扱えるため、明るさや照明条件の影響を受けにくくなります。  
 
-HSV値の取得方法は[この記事](https://qiita.com/rotarymars/items/84c49ebcd5972cbedf30)を参考にしてください。  
+HSV値の詳細は、[こちらの記事](https://qiita.com/rotarymars/items/84c49ebcd5972cbedf30)が参考になります。  
 
 ---
 
 # モジュールのインポート
+
 ```python
 import cv2
 import numpy as np
@@ -63,8 +66,8 @@ green_mask = cv2.inRange(hsv, lower_green, upper_green)
 # ノイズ処理
 
 実際の環境では小さなゴミやノイズを拾ってしまうことがあります。
-そのため、最小面積を設定して小さい領域を無視する、あるいはモルフォロジー処理（膨張・収縮）を追加すると安定します。
+そのため、最小面積を設定して小さい領域を無視したり、モルフォロジー処理（膨張・収縮）を追加すると安定します。
 
 [コードの詳細は以下のリポジトリにまとめています。](https:github.com/techno-robocup/robocup2025_raspberrypi_library)
 
-~Tank you for Reading~
+~Thank you for Reading~
