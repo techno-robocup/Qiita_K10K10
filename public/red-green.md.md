@@ -67,4 +67,4 @@ green_mask = cv2.inRange(hsv, lower_green, upper_green)
 
 [コードの詳細は以下のリポジトリにまとめています。](https:github.com/techno-robocup/robocup2025_raspberrypi_library)
 
-~Tank you for Reading~
+~Thank you for Reading~
